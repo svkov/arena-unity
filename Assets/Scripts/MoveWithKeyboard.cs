@@ -9,6 +9,7 @@ public class MoveWithKeyboard : MonoBehaviour
     public float minOrthographicSize = 5;
     public float maxOrthographicSize = 30;
     private float currentOrthographicSize = 10;
+    public GameObject inventory;
 
     Rigidbody2D rb;
 
@@ -20,6 +21,7 @@ public class MoveWithKeyboard : MonoBehaviour
     void Update()
     {
         Zoom();
+        ShowOrHideInventory();
     }
     void FixedUpdate()
     {
@@ -53,5 +55,13 @@ public class MoveWithKeyboard : MonoBehaviour
         currentOrthographicSize -= Input.mouseScrollDelta.y;
         currentOrthographicSize = Mathf.Clamp(currentOrthographicSize, minOrthographicSize, maxOrthographicSize);
         cam.orthographicSize = currentOrthographicSize;
+    }
+
+    void ShowOrHideInventory()
+    {
+        if(Input.GetKeyUp(KeyCode.I))
+        {
+            inventory.SetActive(!inventory.activeSelf);
+        }
     }
 }
