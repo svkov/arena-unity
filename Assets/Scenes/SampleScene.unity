@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 145262743}
   - component: {fileID: 145262744}
   - component: {fileID: 145262746}
+  - component: {fileID: 145262747}
   - component: {fileID: 145262745}
   m_Layer: 0
   m_Name: skeleton
@@ -506,6 +507,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8, y: 8}
   m_EdgeRadius: 0
+--- !u!114 &145262747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145262735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f6a21d7d5be324ca5a63b95d55d707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  dexterity: 1
+  strength: 1
+  intelligence: 1
+  defense: 0
+  speed: 1
 --- !u!1 &152442153
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,6 +3847,7 @@ GameObject:
   - component: {fileID: 954193148}
   - component: {fileID: 954193147}
   - component: {fileID: 954193146}
+  - component: {fileID: 954193149}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4036,7 +4056,6 @@ MonoBehaviour:
   projectile: {fileID: 4859110998350808094, guid: 9323e2e168903d14ea74d421dd8b4c4f, type: 3}
   projectileRange: 50
   projectileSpeed: 50
-  shootCooldownMax: 1
 --- !u!61 &954193142
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4075,7 +4094,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cad3505215e27d448dd165bfbd920b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
   cam: {fileID: 519420031}
   minOrthographicSize: 5
   maxOrthographicSize: 30
@@ -4145,6 +4163,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPickingUp: 0
+--- !u!114 &954193149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954193131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f6a21d7d5be324ca5a63b95d55d707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 5
+  dexterity: 5
+  strength: 5
+  intelligence: 5
+  defense: 0
+  speed: 5
 --- !u!1 &964153490
 GameObject:
   m_ObjectHideFlags: 0

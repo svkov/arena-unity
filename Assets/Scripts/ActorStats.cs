@@ -23,7 +23,7 @@ public class ActorStats : MonoBehaviour
         return 1.54f * Mathf.Exp(-0.035f * dexterity);
     }
 
-    public float MovementSpeed()
+    public float GetMovementSpeed()
     {
         return speed * 5;
     }

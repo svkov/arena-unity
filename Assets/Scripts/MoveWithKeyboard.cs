@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveWithKeyboard : MonoBehaviour
 {
-    public float speed;
+    float speed;
     public Camera cam;
     public float minOrthographicSize = 5;
     public float maxOrthographicSize = 30;
@@ -15,6 +15,7 @@ public class MoveWithKeyboard : MonoBehaviour
 
     void Start()
     {
+        speed = GetComponent<ActorStats>().GetMovementSpeed();
         rb = GetComponent<Rigidbody2D>();
     }
 
