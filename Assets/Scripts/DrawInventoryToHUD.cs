@@ -9,7 +9,7 @@ public class DrawInventoryToHUD : MonoBehaviour
     Inventory inventory;
     public GameObject inventorySlot;
     public GameObject slots;
-    List<GameObject> inventorySlots = new List<GameObject>();
+    readonly List<GameObject> inventorySlots = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
