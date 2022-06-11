@@ -8,10 +8,11 @@ public class ShootByMouse : MonoBehaviour
     public GameObject projectile;
     public float projectileRange;
     public float projectileSpeed;
-    public float shootCooldownMax;
+    float shootCooldownMax;
     float shootCooldown;
     void Start()
     {
+        shootCooldownMax = GetComponent<ActorStats>().GetAttackSpeed();
         shootCooldown = shootCooldownMax;
     }
 
