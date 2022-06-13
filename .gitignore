@@ -74,3 +74,4 @@ crashlytics-build.properties
 !*.obj
 
 # My exceptions
+Assets/AstarPathfindingProject/*

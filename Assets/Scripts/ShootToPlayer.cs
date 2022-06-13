@@ -8,12 +8,13 @@ public class ShootToPlayer : MonoBehaviour
     public GameObject prefab;
     public float projectileRange;
     public float projectileSpeed;
-    public float shootCooldownMax;
+    float shootCooldownMax;
     float shootCooldown;
     GameObject player;
 
     void Start()
     {
+        shootCooldownMax = GetComponent<ActorStats>().GetAttackSpeed();
         shootCooldown = shootCooldownMax;
         player = GameObject.Find("Player");
     }
@@ -36,7 +37,8 @@ public class ShootToPlayer : MonoBehaviour
 
     void Shoot()
     {
-        var center = GetComponent<Renderer>().bounds.center;
+        // var center = GetComponent<Renderer>().bounds.center;
+        var center = transform.position;
         var direction = player.GetComponent<Renderer>().bounds.center - center;
         direction.Normalize();
         Quaternion projRotation = Quaternion.FromToRotation(Vector3.up, direction);
@@ -46,8 +48,8 @@ public class ShootToPlayer : MonoBehaviour
             center,
             projRotation,
             gameObject,
-            3,
-            10,
+            projectileSpeed,
+            projectileRange,
             direction
         );
     }

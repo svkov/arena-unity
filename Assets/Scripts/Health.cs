@@ -27,5 +27,9 @@ public class Health : MonoBehaviour
     {
         hp = Mathf.Clamp(hp - damage, 0, hp);
         UpdateHp();
+        if(hp == 0)
+        {
+            Destroy(gameObject, 0);
+        }
     }
 }
