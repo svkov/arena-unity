@@ -12,13 +12,13 @@ public class ActorStats : MonoBehaviour
     public int defense = 0;
 
     public int speed = 1;
+    public int experienceToLevelUp = 100;
 
     int experience = 0;
-    int experienceToLevelUp = 100;
 
     void Update()
     {
-        if(experience > experienceToLevelUp)
+        if(experience >= experienceToLevelUp)
         {
             experience -= experienceToLevelUp;
             LevelUp();
@@ -52,5 +52,10 @@ public class ActorStats : MonoBehaviour
     public int ExperienceOnDeath()
     {
         return 100;
+    }
+
+    public void IncreaseExp(int newExpirience)
+    {
+        experience += newExpirience;
     }
 }

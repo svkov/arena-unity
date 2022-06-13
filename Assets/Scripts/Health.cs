@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    // Start is called before the first frame update
     public HpBar hpBar;
     public float maxHp;
     public float hp;
@@ -37,6 +36,7 @@ public class Health : MonoBehaviour
         UpdateHp();
         if (hp == 0)
         {
+            enemyStats.IncreaseExp(GetComponent<ActorStats>().ExperienceOnDeath());
             Destroy(gameObject, 0);
         }
     }
