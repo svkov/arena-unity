@@ -14,16 +14,16 @@ public class ActorStats : MonoBehaviour
     public int speed = 1;
     public int experienceToLevelUp = 100;
 
-    int experience = 0;
+    public int experience = 0;
 
-    void Update()
+    IUpdateUI updateUI;
+
+    void Start()
     {
-        if(experience >= experienceToLevelUp)
-        {
-            experience -= experienceToLevelUp;
-            LevelUp();
-        }
+        updateUI = GetComponent<IUpdateUI>();
+        UpdateUI();
     }
+
     public float GetDamage()
     {
         return strength * 3;
@@ -46,16 +46,33 @@ public class ActorStats : MonoBehaviour
 
     public void LevelUp()
     {
-        Debug.Log("Level Up");
+        level++;
+        dexterity += Random.Range(0, 3);
+        strength += Random.Range(0, 3);
+        intelligence += Random.Range(0, 3);
+        speed += Random.Range(0, 3);
+        defense += Random.Range(0, 3);
     }
 
     public int ExperienceOnDeath()
     {
-        return 100;
+        return 10;
     }
 
     public void IncreaseExp(int newExpirience)
     {
         experience += newExpirience;
+        if(experience >= experienceToLevelUp)
+        {
+            experience -= experienceToLevelUp;
+            LevelUp();
+        }
+        UpdateUI();
+    }
+
+    void UpdateUI()
+    {
+        if(updateUI != null)
+            updateUI.UpdateUI();
     }
 }
