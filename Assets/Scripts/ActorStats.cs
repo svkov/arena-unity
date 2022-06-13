@@ -13,6 +13,17 @@ public class ActorStats : MonoBehaviour
 
     public int speed = 1;
 
+    int experience = 0;
+    int experienceToLevelUp = 100;
+
+    void Update()
+    {
+        if(experience > experienceToLevelUp)
+        {
+            experience -= experienceToLevelUp;
+            LevelUp();
+        }
+    }
     public float GetDamage()
     {
         return strength * 3;
@@ -31,5 +42,15 @@ public class ActorStats : MonoBehaviour
     public float GetMaxHp()
     {
         return strength * 25;
+    }
+
+    public void LevelUp()
+    {
+        Debug.Log("Level Up");
+    }
+
+    public int ExperienceOnDeath()
+    {
+        return 100;
     }
 }

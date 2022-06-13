@@ -19,16 +19,8 @@ public class CollideProjectile : MonoBehaviour
             }
             Destroy(projectile.gameObject);
 
-            if (projectile.owner.TryGetComponent(out ActorStats stats))
-            {
-                var health = GetComponent<Health>();
-                health.TakeDamage(stats.GetDamage());
-            }
-            else if (projectile.owner.TryGetComponent(out DamageDeal dd))
-            {
-                var health = GetComponent<Health>();
-                health.TakeDamage(dd.damage);
-            }
+            var health = GetComponent<Health>();
+            health.TakeDamage(projectile.owner);
         }
     }
 }

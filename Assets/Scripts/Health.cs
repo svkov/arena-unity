@@ -23,11 +23,19 @@ public class Health : MonoBehaviour
         hpBar.SetHealth(hp);
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(GameObject owner)
     {
-        hp = Mathf.Clamp(hp - damage, 0, hp);
+        if (owner.TryGetComponent(out ActorStats stats))
+        {
+            CalculateDamage(stats);
+        }
+    }
+
+    void CalculateDamage(ActorStats enemyStats)
+    {
+        hp = Mathf.Clamp(hp - enemyStats.GetDamage(), 0, hp);
         UpdateHp();
-        if(hp == 0)
+        if (hp == 0)
         {
             Destroy(gameObject, 0);
         }
