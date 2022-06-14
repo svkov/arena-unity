@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class FlipIfMovingLeft : MonoBehaviour
 {
+    public GameObject spriteObject;
     Rigidbody2D rb;
     SpriteRenderer sr;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
+        sr = spriteObject.GetComponent<SpriteRenderer>();
     }
     void Update()
     {

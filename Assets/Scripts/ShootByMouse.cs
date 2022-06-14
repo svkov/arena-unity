@@ -39,7 +39,7 @@ public class ShootByMouse : MonoBehaviour
     void SpawnProjectile()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var center = GetComponent< Renderer>().bounds.center;
+        var center = transform.position;
         Vector3 direction = mousePos - center;
         direction.Normalize();
         Quaternion projRotation = Quaternion.FromToRotation(Vector3.up, direction);

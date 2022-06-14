@@ -65,7 +65,7 @@ public class AttackPlayerBehavior : MonoBehaviour
     void ShootToPlayer()
     {
         var center = transform.position;
-        var direction = target.GetComponent<Renderer>().bounds.center - center;
+        var direction = target.transform.position - center;
         direction.Normalize();
         Quaternion projRotation = Quaternion.FromToRotation(Vector3.up, direction);
 

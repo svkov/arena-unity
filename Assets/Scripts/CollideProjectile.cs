@@ -17,10 +17,10 @@ public class CollideProjectile : MonoBehaviour
             {
                 return;
             }
-            Destroy(projectile.gameObject);
 
             var health = GetComponent<Health>();
             health.TakeDamage(projectile.owner);
+            Destroy(projectile.gameObject);
         }
     }
 }

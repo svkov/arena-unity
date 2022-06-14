@@ -39,7 +39,7 @@ public class ShootToPlayer : MonoBehaviour
     {
         // var center = GetComponent<Renderer>().bounds.center;
         var center = transform.position;
-        var direction = player.GetComponent<Renderer>().bounds.center - center;
+        var direction = player.transform.position - center;
         direction.Normalize();
         Quaternion projRotation = Quaternion.FromToRotation(Vector3.up, direction);
 
