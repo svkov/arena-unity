@@ -8,12 +8,17 @@ public class ShootByMouse : MonoBehaviour
     public GameObject projectile;
     public float projectileRange;
     public float projectileSpeed;
+    public GameObject playerGraphics;
+
+    Animator animator;
+
     float shootCooldownMax;
     float shootCooldown;
     void Start()
     {
         shootCooldownMax = GetComponent<ActorStats>().GetAttackSpeed();
         shootCooldown = shootCooldownMax;
+        animator = playerGraphics.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,6 +38,7 @@ public class ShootByMouse : MonoBehaviour
         {
             shootCooldown = shootCooldownMax;
             SpawnProjectile();
+            animator.SetTrigger("Attack");
         }
     }
 

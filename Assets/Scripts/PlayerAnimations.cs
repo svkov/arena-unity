@@ -21,9 +21,10 @@ public class PlayerAnimations : MonoBehaviour
     {
         if (rb.velocity.magnitude > 0)
         {
-            animator.Play("KnightWalk");
+            // animator.Play("KnightWalk");
+            animator.SetBool("Moving", true);
         } else {
-            animator.Play("KnightIdle");
+            animator.SetBool("Moving", false);
         }
     }
 }

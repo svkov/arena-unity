@@ -7,6 +7,9 @@ public class FlipIfMovingLeft : MonoBehaviour
     public GameObject spriteObject;
     Rigidbody2D rb;
     SpriteRenderer sr;
+
+    bool isFlipped = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -14,6 +17,15 @@ public class FlipIfMovingLeft : MonoBehaviour
     }
     void Update()
     {
-        sr.flipX = rb.velocity.x < 0;
+        if(rb.velocity.x <= -0.01)
+        {
+            isFlipped = true;
+        } else if (rb.velocity.x >= 0.01)
+        {
+            isFlipped = false;
+        }
+
+
+        sr.flipX = isFlipped;
     }
 }
