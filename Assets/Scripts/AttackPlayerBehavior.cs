@@ -79,4 +79,9 @@ public class AttackPlayerBehavior : MonoBehaviour
             direction
         );
     }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, attentionRadius);
+    }
 }
