@@ -36,7 +36,6 @@ public class DrawInventoryToHUD : MonoBehaviour
     {
         for(int i = 0; i < inventory.inventory.Count; i++)
         {
-            Debug.Log(i);
             Transform iconTransform = inventorySlots[i].transform.Find("Icon");
             GameObject icon = iconTransform.gameObject;
             Image image = icon.GetComponent<Image>();
