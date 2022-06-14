@@ -15,6 +15,8 @@ public class EnemyAI : MonoBehaviour
     int currentWaypoint = 0;
     bool reachedOfPath = false;
 
+    public float attentionRadius;
+
     Seeker seeker;
     Rigidbody2D rb;
 
@@ -28,7 +30,7 @@ public class EnemyAI : MonoBehaviour
 
     void UpdatePath()
     {
-        if(target == null)
+        if(target == null | Vector3.Distance(transform.position, target.position) > attentionRadius)
             return;
         if(seeker.IsDone())
             seeker.StartPath(rb.position, target.position, OnPathComplete);

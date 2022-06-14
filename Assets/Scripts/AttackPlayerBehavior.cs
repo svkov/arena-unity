@@ -53,7 +53,7 @@ public class AttackPlayerBehavior : MonoBehaviour
 
     bool CanAttack()
     {
-        float distance = Vector2.Distance(target.transform.position, transform.position);
+        float distance = Vector3.Distance(target.transform.position, transform.position);
         return (attackCooldown == 0) && (distance < attentionRadius);
     }
 
