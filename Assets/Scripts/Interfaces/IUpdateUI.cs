@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IUpdateUI
+public interface IUpdateExperienceUI
 {
-    public void UpdateUI();
+    public void UpdateUI(int level, int maxExperience, int experience);
 }

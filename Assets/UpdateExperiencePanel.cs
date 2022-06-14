@@ -2,22 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpdateExperiencePanel : MonoBehaviour, IUpdateUI
+public class UpdateExperiencePanel : MonoBehaviour, IUpdateExperienceUI
 {
     public GameObject experiencePanelGameObject;
     ExperiencePanel experiencePanel;
-    ActorStats actorStats;
 
-    void Start()
+    void Awake()
     {
         experiencePanel = experiencePanelGameObject.GetComponent<ExperiencePanel>();
-        actorStats = GetComponent<ActorStats>();
     }
 
-    void IUpdateUI.UpdateUI()
+    void IUpdateExperienceUI.UpdateUI(int level, int maxExperience, int experience)
     {
-        experiencePanel.SetLevel(actorStats.level);
-        experiencePanel.maxExperience = actorStats.experienceToLevelUp;
-        experiencePanel.SetExp(actorStats.experience);
+        experiencePanel.SetLevel(level);
+        experiencePanel.maxExperience = maxExperience;
+        experiencePanel.SetExp(experience);
     }
 }

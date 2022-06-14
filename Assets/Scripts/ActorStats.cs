@@ -16,11 +16,11 @@ public class ActorStats : MonoBehaviour
 
     public int experience = 0;
 
-    IUpdateUI updateUI;
+    IUpdateExperienceUI updateUI;
 
     void Start()
     {
-        updateUI = GetComponent<IUpdateUI>();
+        updateUI = GetComponent<IUpdateExperienceUI>();
         UpdateUI();
     }
 
@@ -73,6 +73,9 @@ public class ActorStats : MonoBehaviour
     void UpdateUI()
     {
         if(updateUI != null)
-            updateUI.UpdateUI();
+        {
+            updateUI.UpdateUI(level, experienceToLevelUp, experience);
+        }
+        
     }
 }
