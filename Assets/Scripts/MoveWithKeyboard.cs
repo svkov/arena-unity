@@ -8,7 +8,7 @@ public class MoveWithKeyboard : MonoBehaviour
     public Camera cam;
     public float minOrthographicSize = 5;
     public float maxOrthographicSize = 30;
-    private float currentOrthographicSize = 10;
+    private float currentOrthographicSize = 20;
     public GameObject inventory;
 
     Rigidbody2D rb;
