@@ -13,7 +13,6 @@ public class PlayerAnimations : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = animatorObject.GetComponent<Animator>();
-        animator.Play("KnightIdle");
     }
 
     // Update is called once per frame
