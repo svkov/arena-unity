@@ -22,8 +22,18 @@ public class PlayerAnimations : MonoBehaviour
         {
             // animator.Play("KnightWalk");
             animator.SetBool("Moving", true);
-        } else {
+        }
+        else
+        {
             animator.SetBool("Moving", false);
+        }
+        if (rb.velocity.y >= 0.01f)
+        {
+            animator.SetBool("Back", true);
+        }
+        else if (rb.velocity.y <= 0.01f)
+        {
+            animator.SetBool("Back", false);
         }
     }
 }
