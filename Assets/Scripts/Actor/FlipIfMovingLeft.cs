@@ -20,12 +20,14 @@ public class FlipIfMovingLeft : MonoBehaviour
         if(rb.velocity.x <= -0.01)
         {
             isFlipped = true;
+            sr.flipX = isFlipped;
         } else if (rb.velocity.x >= 0.01)
         {
             isFlipped = false;
+            sr.flipX = isFlipped;
         }
 
 
-        sr.flipX = isFlipped;
+        
     }
 }

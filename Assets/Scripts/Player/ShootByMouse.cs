@@ -11,6 +11,7 @@ public class ShootByMouse : MonoBehaviour
     public GameObject playerGraphics;
 
     Animator animator;
+    SpriteRenderer sr;
 
     float shootCooldownMax;
     float shootCooldown;
@@ -19,6 +20,7 @@ public class ShootByMouse : MonoBehaviour
         shootCooldownMax = GetComponent<ActorStats>().GetAttackSpeed();
         shootCooldown = shootCooldownMax;
         animator = playerGraphics.GetComponent<Animator>();
+        sr = playerGraphics.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -37,14 +39,15 @@ public class ShootByMouse : MonoBehaviour
         if(Input.GetMouseButton(0) && shootCooldown <= 0)
         {
             shootCooldown = shootCooldownMax;
-            SpawnProjectile();
             animator.SetTrigger("Attack");
+            SpawnProjectile();
         }
     }
 
     void SpawnProjectile()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        FlipIfNeeded(mousePos);
         var center = transform.position;
         Vector3 direction = mousePos - center;
         direction.Normalize();
@@ -59,5 +62,16 @@ public class ShootByMouse : MonoBehaviour
             projectileRange,
             direction
         );
+    }
+
+    void FlipIfNeeded(Vector3 mousePos)
+    {
+        if(mousePos.x < transform.position.x & !sr.flipX)
+        {
+            sr.flipX = true;
+        } else if(mousePos.x > transform.position.x & sr.flipX)
+        {
+            sr.flipX = false;
+        }
     }
 }

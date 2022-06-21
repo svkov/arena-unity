@@ -5116,6 +5116,7 @@ MonoBehaviour:
   minOrthographicSize: 5
   maxOrthographicSize: 30
   inventory: {fileID: 1467252168}
+  graphics: {fileID: 893317808}
 --- !u!114 &954193144
 MonoBehaviour:
   m_ObjectHideFlags: 0
