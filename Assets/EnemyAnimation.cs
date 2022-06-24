@@ -9,6 +9,7 @@ public class EnemyAnimation : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Health healthObj;
+    EnemyAI ai;
 
     bool alive = true;
 
@@ -18,6 +19,7 @@ public class EnemyAnimation : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = graphics.GetComponent<SpriteRenderer>();
         healthObj = GetComponent<Health>();
+        ai = GetComponent<EnemyAI>();
     }
 
     void Update()
@@ -30,7 +32,7 @@ public class EnemyAnimation : MonoBehaviour
 
     void PlayAnimation()
     {
-        Vector2 movement = rb.velocity.normalized;
+        Vector2 movement = ai.movement;
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
@@ -38,10 +40,10 @@ public class EnemyAnimation : MonoBehaviour
 
         if(movement.x < -0.01f)
         {
-            sr.flipX = true;
+            sr.flipX = false;
         } else if (movement.x > 0.01f)
         {
-            sr.flipX = false;
+            sr.flipX = true;
         }
 
         if(healthObj.hp == 0 && alive)

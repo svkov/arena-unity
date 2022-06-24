@@ -16,6 +16,7 @@ public class EnemyAI : MonoBehaviour
     bool reachedOfPath = false;
 
     public float attentionRadius;
+    public Vector2 movement;
 
     Seeker seeker;
     Rigidbody2D rb;
@@ -66,11 +67,9 @@ public class EnemyAI : MonoBehaviour
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        // Vector2 force = speed * Time.fixedDeltaTime * direction;
+        movement = direction.normalized;
 
-        // rb.AddForce(force);
-
-        rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * direction.normalized);
+        rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * movement);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
         if(distance < nextWaypointDistance)
