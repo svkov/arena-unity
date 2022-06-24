@@ -16,9 +16,6 @@ public class MoveWithKeyboard : MonoBehaviour
     SpriteRenderer sr;
     Animator animator;
 
-    Vector2 currentMove = new Vector2(0, 0);
-    bool isLeft = false;
-
     void Start()
     {
         speed = GetComponent<ActorStats>().GetMovementSpeed();
@@ -29,7 +26,6 @@ public class MoveWithKeyboard : MonoBehaviour
 
     void Update()
     {
-        SetAnimation(currentMove);
         Zoom();
         ShowOrHideInventory();
     }
@@ -57,55 +53,7 @@ public class MoveWithKeyboard : MonoBehaviour
         {
             sr.flipX = false;
         }
-    }
-
-    void SetAnimation(Vector2 move)
-    {
-        var currentState = animator.GetCurrentAnimatorStateInfo(0);
-        if (move.y > 0)
-        {
-            animator.SetBool("Back", true);
-        }
-        if (move.y < 0 || (move.magnitude > 0 && move.y == 0))
-        {
-            animator.SetBool("Back", false);
-        }
-        SetMoving(move);
-        if (move.x < 0)
-        {
-            isLeft = true;
-            sr.flipX = true;
-        }
-        if (move.x > 0)
-        {
-            isLeft = false;
-            sr.flipX = false;
-        }
-        bool isAnimationBack = currentState.IsName("KnightWalkBack") || currentState.IsName("KnightIdleBack");
-        if (isAnimationBack)
-        {
-            sr.flipX = false;
-        }
-        else if (isLeft)
-        {
-            sr.flipX = true;
-        }
-        if (sr.flipX)
-        {
-            Debug.Log("Flipped");
-        }
-    }
-
-    void SetMoving(Vector2 move)
-    {
-        if (move.magnitude > 0)
-        {
-            animator.SetBool("Moving", true);
-        }
-        else
-        {
-            animator.SetBool("Moving", false);
-        }
+        animator.SetBool("Back", movement.y > 0);
     }
 
     void Zoom()
