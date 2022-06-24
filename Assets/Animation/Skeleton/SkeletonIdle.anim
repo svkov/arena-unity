@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NewKnightWalk
+  m_Name: SkeletonIdle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -3087027833369820482, guid: 4d50080fa5ab2db43840eb6e38226455, type: 3}
+      value: {fileID: 3694261078260737984, guid: 2d3aa5c08a198fa4f96f630b7ae93565, type: 3}
     - time: 0.083333336
-      value: {fileID: -5391677682209085, guid: 4d50080fa5ab2db43840eb6e38226455, type: 3}
-    - time: 0.16666667
-      value: {fileID: -7736957997093666782, guid: 4d50080fa5ab2db43840eb6e38226455, type: 3}
-    - time: 0.25
-      value: {fileID: 7702817472164101085, guid: 4d50080fa5ab2db43840eb6e38226455, type: 3}
+      value: {fileID: -4336049383593728279, guid: 2d3aa5c08a198fa4f96f630b7ae93565, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,16 +42,14 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -3087027833369820482, guid: 4d50080fa5ab2db43840eb6e38226455, type: 3}
-    - {fileID: -5391677682209085, guid: 4d50080fa5ab2db43840eb6e38226455, type: 3}
-    - {fileID: -7736957997093666782, guid: 4d50080fa5ab2db43840eb6e38226455, type: 3}
-    - {fileID: 7702817472164101085, guid: 4d50080fa5ab2db43840eb6e38226455, type: 3}
+    - {fileID: 3694261078260737984, guid: 2d3aa5c08a198fa4f96f630b7ae93565, type: 3}
+    - {fileID: -4336049383593728279, guid: 2d3aa5c08a198fa4f96f630b7ae93565, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.33333334
+    m_StopTime: 0.16666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

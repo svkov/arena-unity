@@ -19,19 +19,19 @@ public class PlayerAnimations : MonoBehaviour
 
     void Update()
     {
-        if (rb.velocity.magnitude > 0)
-        {
-            animator.SetBool("Moving", true);
-        }
-        else
-        {
-            animator.SetBool("Moving", false);
-        }
-        // if (rb.velocity.y >= 0.01f)
+        // if (rb.velocity.magnitude > 0)
+        // {
+        //     animator.SetBool("Moving", true);
+        // }
+        // else
+        // {
+        //     animator.SetBool("Moving", false);
+        // }
+        // if (rb.velocity.y >= 0.1f)
         // {
         //     animator.SetBool("Back", true);
         // }
-        // else if (rb.velocity.y <= -0.01f)
+        // else if (rb.velocity.y <= -0.1f)
         // {
         //     animator.SetBool("Back", false);
         // }
