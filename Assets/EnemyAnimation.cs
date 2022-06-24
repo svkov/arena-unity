@@ -8,36 +8,46 @@ public class EnemyAnimation : MonoBehaviour
     Animator animator;
     Rigidbody2D rb;
     SpriteRenderer sr;
+    Health healthObj;
+
+    bool alive = true;
 
     void Start()
     {
         animator = graphics.GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sr = graphics.GetComponent<SpriteRenderer>();
+        healthObj = GetComponent<Health>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (rb.velocity.magnitude > 0.01f)
+        if(alive)
         {
-            animator.SetBool("Walk", true);
+            PlayAnimation();
         }
-        else if(rb.velocity.magnitude < -0.01f)
+    }
+
+    void PlayAnimation()
+    {
+        Vector2 movement = rb.velocity.normalized;
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+        animator.SetBool("Back", movement.y > 0);
+
+        if(movement.x < -0.01f)
         {
-            animator.SetBool("Walk", false);
-        }
-        if(rb.velocity.y > 0.01f)
-        {
-            animator.SetBool("Back", true);
-        }
-        else if(rb.velocity.y < -0.01f)
-        {
-            animator.SetBool("Back", false);
-        }
-        if(animator.GetBool("Back"))
+            sr.flipX = true;
+        } else if (movement.x > 0.01f)
         {
             sr.flipX = false;
+        }
+
+        if(healthObj.hp == 0 && alive)
+        {
+            alive = false;
+            animator.SetTrigger("Die");
         }
     }
 }

@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
 
     public Transform target;
 
-    public float speed = 200.0f;
+    public float speed;
     public float nextWaypointDistance = 3f;
 
     Path path;
@@ -19,17 +19,21 @@ public class EnemyAI : MonoBehaviour
 
     Seeker seeker;
     Rigidbody2D rb;
+    Health health;
 
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        health = GetComponent<Health>();
+        speed = GetComponent<ActorStats>().GetMovementSpeed();
         InvokeRepeating(nameof(UpdatePath), 0, 0.5f);
-        speed *= rb.mass;
     }
 
     void UpdatePath()
     {
+        if(health.hp == 0)
+            return;
         if(target == null | Vector3.Distance(transform.position, target.position) > attentionRadius)
             return;
         if(seeker.IsDone())
@@ -47,6 +51,9 @@ public class EnemyAI : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(health.hp == 0)
+            return;
+
         if(path == null)
             return;
         
@@ -59,9 +66,11 @@ public class EnemyAI : MonoBehaviour
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = speed * Time.fixedDeltaTime * direction;
+        // Vector2 force = speed * Time.fixedDeltaTime * direction;
 
-        rb.AddForce(force);
+        // rb.AddForce(force);
+
+        rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * direction.normalized);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
         if(distance < nextWaypointDistance)

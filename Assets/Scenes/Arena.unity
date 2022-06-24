@@ -10562,11 +10562,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 820240276399658510, guid: ba5c45197b1079b478ae3e028cb9fe60, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.567
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 820240276399658510, guid: ba5c45197b1079b478ae3e028cb9fe60, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 820240278069736012, guid: ba5c45197b1079b478ae3e028cb9fe60, type: 3}
       propertyPath: m_Camera
@@ -10581,6 +10581,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 0d62f6b682f5d8c4cb5b22d85b25c102, type: 3}
     - target: {fileID: 1882319552260551376, guid: ba5c45197b1079b478ae3e028cb9fe60, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882319552260551376, guid: ba5c45197b1079b478ae3e028cb9fe60, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 954193134}
@@ -10590,7 +10594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1882319552260551381, guid: ba5c45197b1079b478ae3e028cb9fe60, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1882319552260551402, guid: ba5c45197b1079b478ae3e028cb9fe60, type: 3}
       propertyPath: target

@@ -17,6 +17,7 @@ public class AttackPlayerBehavior : MonoBehaviour
     Rigidbody2D rb;
 
     ActorStats stats;
+    Health healthObj;
 
     float attackSpeed;
     float attackCooldown;
@@ -25,12 +26,13 @@ public class AttackPlayerBehavior : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<ActorStats>();
+        healthObj = GetComponent<Health>();
         UpdateAttackSpeed();
     }
 
     void Update()
     {
-        if(target == null)
+        if(target == null || healthObj.hp == 0)
             return;
         UpdateAttackCooldown();
         if(CanAttack())

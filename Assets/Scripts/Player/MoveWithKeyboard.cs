@@ -39,6 +39,7 @@ public class MoveWithKeyboard : MonoBehaviour
         Vector2 movement;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        movement.Normalize();
         rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * movement);
 
         animator.SetFloat("Horizontal", movement.x);

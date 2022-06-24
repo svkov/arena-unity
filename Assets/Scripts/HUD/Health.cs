@@ -37,7 +37,7 @@ public class Health : MonoBehaviour
         if (hp == 0)
         {
             enemyStats.IncreaseExp(GetComponent<ActorStats>().ExperienceOnDeath());
-            Destroy(gameObject, 0);
+            Destroy(gameObject, 3.0f);
         }
     }
 }
