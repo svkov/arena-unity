@@ -35,11 +35,10 @@ public class MoveWithKeyboard : MonoBehaviour
     }
     void FixedUpdate()
     {
-        // Move();
-        NewMove();
+        Move();
     }
 
-    void NewMove()
+    void Move()
     {
         Vector2 movement;
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -58,30 +57,6 @@ public class MoveWithKeyboard : MonoBehaviour
         {
             sr.flipX = false;
         }
-    }
-
-    void Move()
-    {
-        Vector2 move = new Vector2(0, 0);
-        if (Input.GetKey(KeyCode.W))
-        {
-            move += Vector2.up;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            move += Vector2.down;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            move += Vector2.left;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            move += Vector2.right;
-        }
-
-        rb.velocity = speed * move;
-        currentMove = move;
     }
 
     void SetAnimation(Vector2 move)
