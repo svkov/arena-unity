@@ -14,6 +14,12 @@ TextureImporter:
   - first:
       213: 4279386226796027803
     second: Skeleton_back_walk_3
+  - first:
+      213: 92190057398923177
+    second: Skeleton_back_walk_4
+  - first:
+      213: 243176242616964084
+    second: Skeleton_back_walk_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -118,10 +124,10 @@ TextureImporter:
       name: Skeleton_back_walk_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
+        x: 18
+        y: 6
+        width: 37
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,34 +142,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_back_walk_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 54ffff0e1e4b85c60800000000000000
-      internalID: 7807188836282269509
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Skeleton_back_walk_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
+        x: 82
+        y: 7
+        width: 36
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,13 +163,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_back_walk_3
+      name: Skeleton_back_walk_4
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
+        x: 146
+        y: 6
+        width: 37
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,8 +177,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9f50e0a91f636b30800000000000000
-      internalID: 4279386226796027803
+      spriteID: 9afe5176e56874100800000000000000
+      internalID: 92190057398923177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton_back_walk_6
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 7
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f39ff6118fef5300800000000000000
+      internalID: 243176242616964084
       vertices: []
       indices: 
       edges: []
