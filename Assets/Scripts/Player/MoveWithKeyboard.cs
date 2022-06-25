@@ -26,6 +26,11 @@ public class MoveWithKeyboard : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+            
         Zoom();
         ShowOrHideInventory();
     }
