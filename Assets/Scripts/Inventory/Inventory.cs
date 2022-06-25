@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
     public int size;
     public List<Item> inventory = new List<Item>();
 
-    public bool Add (Item item)
+    public bool Add(Item item)
     {
         if (HasFreeSpace())
         {
@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
 
     public void Remove(Item item)
     {
-        if(inventory.Contains(item))
+        if (inventory.Contains(item))
         {
             inventory.Remove(item);
         }
@@ -28,5 +28,17 @@ public class Inventory : MonoBehaviour
     public bool HasFreeSpace()
     {
         return inventory.Count < size;
+    }
+
+    public Item FindItemByName(string itemName)
+    {
+        for(int i = 0; i < inventory.Count; i++)
+        {
+            if(inventory[i].name == itemName)
+            {
+                return inventory[i];
+            }
+        }
+        return null;
     }
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707fa47dc3ce3744f82688d5a701976f, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  name: unknown
-  description: 
+  name: Sword
+  description: Not as sharp as could be
   icon: {fileID: 21300000, guid: 8049f809d24dd3140b0925ff82ca1664, type: 3}

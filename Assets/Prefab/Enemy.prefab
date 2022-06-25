@@ -438,8 +438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 7996814727687713399}
-  maxHp: 0
-  hp: 0
+  maxHp: 1
+  hp: 1
 --- !u!61 &7996814728123250837
 BoxCollider2D:
   m_ObjectHideFlags: 0

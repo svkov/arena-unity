@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
 {
-    public bool isPickingUp = false;
+    public float pickingRadius = 20;
+    public LayerMask itemLayer;
     Inventory inventory;
 
     void Start()
@@ -14,24 +15,58 @@ public class PickUpItem : MonoBehaviour
 
     void Update()
     {
-        PickUp();
+        TryPickUpItem();
     }
 
-    void PickUp()
+    void TryPickUpItem()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            isPickingUp = true;
-        }
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            isPickingUp = false;
+            Collider2D collider = Physics2D.OverlapCircle(transform.position, pickingRadius, itemLayer);
+            if (collider == null)
+                return;
+            if (collider.gameObject.TryGetComponent<ItemPicking>(out var item))
+            {
+                OnPickUp(item);
+            }
+            else if (collider.gameObject.TryGetComponent<Portal>(out var portal))
+            {
+                InteractPortal(portal);
+            }
+
         }
     }
 
-    public bool OnPickUp(Item item)
+    public void OnPickUp(ItemPicking item)
     {
-        isPickingUp = false;
-        return inventory.Add(item);
+        bool success = inventory.Add(item.item);
+        if (success)
+        {
+            Destroy(item.gameObject);
+        }
+    }
+
+    void InteractPortal(Portal portal)
+    {
+
+        if (portal.isActivated)
+        {
+            portal.EnterPortal();
+        }
+        else
+        {
+            Item soulStone = inventory.FindItemByName("Soul Stone");
+            Debug.Log(soulStone);
+            if (soulStone != null)
+            {
+                inventory.Remove(soulStone);
+                portal.ActivatePortal();
+            }
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, pickingRadius);
     }
 }
