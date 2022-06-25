@@ -81,17 +81,12 @@ public class EnemyAI : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (health.hp == 0)
+
+        if (health.hp == 0 || path == null)
         {
-            movement = new Vector2(0, 0);
             return;
         }
 
-        if (path == null)
-        {
-            movement = new Vector2(0, 0);
-            return;
-        }
         if (currentWaypoint >= path.vectorPath.Count)
         {
             reachedOfPath = true;
@@ -104,14 +99,15 @@ public class EnemyAI : MonoBehaviour
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        movement = direction;
 
-        rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * movement);
+        rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * direction);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
         if (distance < nextWaypointDistance)
         {
             currentWaypoint++;
+        } else {
+            movement = direction;
         }
     }
 
