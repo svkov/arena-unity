@@ -6,9 +6,9 @@ public class MoveWithKeyboard : MonoBehaviour
 {
     float speed;
     public Camera cam;
-    public float minOrthographicSize = 5;
-    public float maxOrthographicSize = 30;
-    private float currentOrthographicSize = 20;
+    public float minOrthographicSize;
+    public float maxOrthographicSize;
+    public float currentOrthographicSize;
     public GameObject inventory;
     public GameObject graphics;
 
