@@ -48,9 +48,13 @@ public class Projectile : MonoBehaviour
         proj.owner = owner;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collision.gameObject != owner)
+        if(collider.gameObject.layer == owner.layer)
+            return;
+
+        if(collider.gameObject != owner)
             Destroy(gameObject);
+        
     }
 }
