@@ -10,11 +10,19 @@ public class Projectile : MonoBehaviour
 
     public GameObject owner;
     private float movedDistance = 0;
-    void Update()
+
+    Rigidbody2D rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void FixedUpdate()
     {
         Vector3 shift = speed * Time.deltaTime * direction;
         movedDistance += shift.magnitude;
-        transform.position += shift;
+        rb.MovePosition(transform.position + shift);
 
         if (movedDistance > range)
         {
@@ -38,5 +46,11 @@ public class Projectile : MonoBehaviour
         proj.speed = speed;
         proj.range = range;
         proj.owner = owner;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject != owner)
+            Destroy(gameObject);
     }
 }
