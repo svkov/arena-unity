@@ -378,7 +378,7 @@ MonoBehaviour:
   graphics: {fileID: 7996814728340882630}
   speed: 1
   nextWaypointDistance: 3
-  attentionRadius: 35
+  attentionRadius: 70
   movement: {x: 0, y: 0}
   shootCooldownMax: 0
   prefab: {fileID: 4859110998350808094, guid: 9323e2e168903d14ea74d421dd8b4c4f, type: 3}

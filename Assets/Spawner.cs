@@ -22,7 +22,8 @@ public class Spawner : MonoBehaviour
 
     void SpawnSkeleton()
     {
-        var newSkeleton = Instantiate(skeleton, new Vector3(0, 0, 0), Quaternion.identity);
+        var pos = new Vector3(Random.value * 200 - 100, Random.value * 200 - 100, 0);
+        var newSkeleton = Instantiate(skeleton, pos, Quaternion.identity);
         newSkeleton.GetComponent<EnemyAI>().target = player.transform;
         skeletons.Add(newSkeleton);
     }
