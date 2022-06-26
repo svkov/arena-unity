@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour
     public GameObject priestess;
     public List<GameObject> skeletons;
     public Item soulStone;
+    public GameObject itemObj;
 
     int spawn_skeleton_per_level;
     void Start()
@@ -39,6 +40,7 @@ public class Spawner : MonoBehaviour
         var pos = GetRandomPosition();
         var newEnemy = Instantiate(enemy, pos, Quaternion.identity);
         newEnemy.GetComponent<EnemyAI>().target = player.transform;
+        newEnemy.GetComponent<Inventory>().itemObj = itemObj;
         return newEnemy;
     }
 

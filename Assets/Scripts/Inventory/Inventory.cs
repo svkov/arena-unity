@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
 {
     public int size;
     public List<Item> inventory = new List<Item>();
+    public GameObject itemObj;
 
     public bool Add(Item item)
     {
@@ -40,5 +41,21 @@ public class Inventory : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void Drop(Item item)
+    {
+        var newItem = Instantiate(itemObj, transform.position, Quaternion.identity);;
+        newItem.GetComponent<SpriteRenderer>().sprite = item.icon;
+        newItem.GetComponent<ItemPicking>().item = item;
+        Remove(item);
+    }
+
+    public void DropAll()
+    {
+        while(inventory.Count > 0)
+        {
+            Drop(inventory[0]);
+        }
     }
 }

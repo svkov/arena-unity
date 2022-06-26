@@ -173,6 +173,7 @@ public class EnemyAI : MonoBehaviour
 
     #endregion ShootToPlayer
 
+    #region Animation
 
     void PlayAnimation()
     {
@@ -187,6 +188,7 @@ public class EnemyAI : MonoBehaviour
         {
             alive = false;
             animator.SetTrigger("Die");
+            Die();
         }
     }
 
@@ -201,4 +203,10 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    #endregion Animation
+
+    void Die()
+    {
+        GetComponent<Inventory>().DropAll();
+    }
 }
