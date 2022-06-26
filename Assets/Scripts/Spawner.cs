@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     public GameObject player;
     public GameObject skeleton;
+    public GameObject priestess;
     public List<GameObject> skeletons;
     public Item soulStone;
 
@@ -22,14 +23,27 @@ public class Spawner : MonoBehaviour
 
     void SpawnSkeleton()
     {
-        var pos = new Vector3(Random.value * 200 - 100, Random.value * 200 - 100, 0);
-        var newSkeleton = Instantiate(skeleton, pos, Quaternion.identity);
-        newSkeleton.GetComponent<EnemyAI>().target = player.transform;
+        var newSkeleton = SpawnEnemyRandomly(skeleton);
         skeletons.Add(newSkeleton);
     }
 
     void SpawnSoulStone()
     {
-        skeletons[0].GetComponent<Inventory>().Add(soulStone);
+        var newPriestess = SpawnEnemyRandomly(priestess);
+        newPriestess.GetComponent<Inventory>().Add(soulStone);
+    }
+
+
+    GameObject SpawnEnemyRandomly(GameObject enemy)
+    {
+        var pos = GetRandomPosition();
+        var newEnemy = Instantiate(enemy, pos, Quaternion.identity);
+        newEnemy.GetComponent<EnemyAI>().target = player.transform;
+        return newEnemy;
+    }
+
+    Vector3 GetRandomPosition()
+    {
+        return new Vector3(Random.value * 200 - 100, Random.value * 200 - 100, 0);
     }
 }

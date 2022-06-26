@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 7996814728123250836}
   - component: {fileID: 7376792898718530907}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: Priestess
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -325,7 +325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7996814728123250861}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7996814728423191534}
@@ -418,11 +418,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  dexterity: 1
-  strength: 1
-  intelligence: 1
+  dexterity: 3
+  strength: 3
+  intelligence: 3
   defense: 0
-  speed: 1
+  speed: 3
   experienceToLevelUp: 1
   experience: 0
 --- !u!114 &7996814728123250859
@@ -453,7 +453,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.2772992, y: 0}
+  m_Offset: {x: -0.47631884, y: 0.06556177}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -464,7 +464,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 11.45298, y: 12}
+  m_Size: {x: 10.207295, y: 12.131124}
   m_EdgeRadius: 0
 --- !u!114 &7996814728123250836
 MonoBehaviour:
@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 7996814728340882628}
   - component: {fileID: 7996814727881936759}
   m_Layer: 9
-  m_Name: skeleton
+  m_Name: graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -518,7 +518,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7996814728340882630}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.25, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7996814728123250838}
@@ -564,7 +564,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8437431037884990793, guid: a80c26785b4e80b4f9077938f82a72d5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cdba1ac6607564e41863232cb47a4aa3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -585,7 +585,7 @@ Animator:
   m_GameObject: {fileID: 7996814728340882630}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f8339bd6cc9226549bcfd9223fa7d296, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2dc3d58a03a262448a549822fbcec976, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
