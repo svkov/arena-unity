@@ -25,10 +25,16 @@ public class ChooseCharacterMenu : MonoBehaviour
 
     public void LoadCharacter()
     {
-        menuStateHandler.SetState(MenuState.LoadingScreen);
+        StartGame();
     }
 
     public void NewGame()
+    {
+        PlayerPrefs.DeleteAll();
+        StartGame();
+    }
+
+    void StartGame()
     {
         menuStateHandler.SetState(MenuState.LoadingScreen);
     }

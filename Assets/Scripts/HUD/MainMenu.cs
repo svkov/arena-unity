@@ -35,24 +35,4 @@ public class MainMenu : MonoBehaviour
         Debug.Log("High Scores");
     }
 
-    void HideButtons()
-    {
-        gameObject.SetActive(false);
-    }
-
-    void ShowLoadingTextPanel()
-    {
-        loadingTextPanel.SetActive(true);
-    }
-
-    IEnumerator LoadYourAsyncScene()
-    {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Arena");
-        while (!asyncLoad.isDone)
-        {
-            Debug.Log("Loading..." + asyncLoad.progress);
-            loadingTextPanel.GetComponent<LoadingText>().SetProgress(asyncLoad.progress);
-            yield return null;
-        }
-    }
 }
