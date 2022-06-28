@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour
     int spawn_skeleton_per_level;
     void Start()
     {
-        spawn_skeleton_per_level = 5 * State.level_number;
+        spawn_skeleton_per_level = 5 * PlayerPrefs.GetInt("level_number", 1);
         for(int i = skeletons.Count; skeletons.Count < spawn_skeleton_per_level; i++)
         {
             SpawnSkeleton();

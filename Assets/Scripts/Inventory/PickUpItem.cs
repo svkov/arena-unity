@@ -51,7 +51,7 @@ public class PickUpItem : MonoBehaviour
 
         if (portal.isActivated)
         {
-            portal.EnterPortal();
+            portal.EnterPortal(gameObject);
         }
         else
         {

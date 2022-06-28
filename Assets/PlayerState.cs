@@ -111,6 +111,15 @@ public class PlayerState : MonoBehaviour
 
     void DeleteData()
     {
-        //TODO: Delete irrelevant data
+        //TODO: Delete data on player death
+        PlayerPrefs.DeleteAll();
+    }
+
+    public void NextLevel()
+    {
+        int level_number = PlayerPrefs.GetInt("level_number", 1);
+        level_number++;
+        PlayerPrefs.SetInt("level_number", level_number);
+        Debug.Log("Level: " + PlayerPrefs.GetInt("level_number", 1));
     }
 }

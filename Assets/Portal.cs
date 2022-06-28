@@ -32,11 +32,11 @@ public class Portal : MonoBehaviour
         isActivated = true;
     }
 
-    public void EnterPortal()
+    public void EnterPortal(GameObject player)
     {
         if(isActivated)
         {
-            State.level_number++;
+            player.GetComponent<PlayerState>().NextLevel();
             StartCoroutine(LoadNextLevel());
         }
     }
