@@ -26,7 +26,7 @@ public class ActorStats : MonoBehaviour
         if(onChangeStats == null)
             onChangeStats = new UnityEvent();
         updateUI = GetComponent<IUpdateExperienceUI>();
-        UpdateUI();
+        onChangeStats.Invoke();
     }
 
     void OnValidate()
@@ -43,7 +43,7 @@ public class ActorStats : MonoBehaviour
         this.defense = defense;
         this.speed = speed;
         this.experience = experience;
-        UpdateUI();
+        onChangeStats.Invoke();
     }
 
     public float GetDamage()
@@ -90,15 +90,7 @@ public class ActorStats : MonoBehaviour
             experience -= experienceToLevelUp;
             LevelUp();
         }
-        UpdateUI();
+        onChangeStats.Invoke();
     }
 
-    void UpdateUI()
-    {
-        if(updateUI != null)
-        {
-            updateUI.UpdateUI(level, experienceToLevelUp, experience);
-        }
-        
-    }
 }

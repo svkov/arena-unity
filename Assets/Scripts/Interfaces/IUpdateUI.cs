@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IUpdateExperienceUI
 {
-    public void UpdateUI(int level, int maxExperience, int experience);
+    public void UpdateUI();
 }

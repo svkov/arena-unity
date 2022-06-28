@@ -36,4 +36,11 @@ public class ExperiencePanel : MonoBehaviour
         if(text != null)
             text.text = "Level: " + level.ToString();
     }
+
+    public void UpdateUI(ActorStats actorStats)
+    {
+        SetLevel(actorStats.level);
+        maxExperience = actorStats.experienceToLevelUp;
+        SetExp(actorStats.experience);
+    }
 }
