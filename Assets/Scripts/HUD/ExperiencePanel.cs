@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ExperiencePanel : MonoBehaviour
+public class ExperiencePanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public int maxExperience;
     public GameObject textObject;
@@ -13,6 +14,8 @@ public class ExperiencePanel : MonoBehaviour
     Text text;
     Slider slider;
     Text experienceText;
+
+    string lastExpirienceText;
 
     void Start()
     {
@@ -27,7 +30,8 @@ public class ExperiencePanel : MonoBehaviour
         {
             slider.maxValue = maxExperience;
             slider.value = experience;
-            experienceText.text = experience.ToString() + "/" + maxExperience.ToString();
+            lastExpirienceText = experience.ToString() + "/" + maxExperience.ToString();
+            experienceText.text = lastExpirienceText;
         }
     }
 
@@ -43,4 +47,16 @@ public class ExperiencePanel : MonoBehaviour
         maxExperience = actorStats.experienceToLevelUp;
         SetExp(actorStats.experience);
     }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        experienceText.text = "EXP";
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        experienceText.text = lastExpirienceText;
+    }
+
+    
 }
