@@ -347,6 +347,7 @@ GameObject:
   - component: {fileID: 144682804}
   - component: {fileID: 144682803}
   - component: {fileID: 144682802}
+  - component: {fileID: 144682805}
   m_Layer: 5
   m_Name: ChooseCharacterPanel
   m_TagString: Untagged
@@ -441,6 +442,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144682800}
   m_CullTransparentMesh: 1
+--- !u!114 &144682805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144682800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 607ff4ac6c5c85e4faa244af3da889d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  load: {fileID: 1946074640}
+  newGame: {fileID: 283964920}
+  back: {fileID: 527779240}
+  description: {fileID: 1256934767}
 --- !u!1 &171597636
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,6 +548,7 @@ GameObject:
   - component: {fileID: 180598536}
   - component: {fileID: 180598538}
   - component: {fileID: 180598537}
+  - component: {fileID: 180598539}
   m_Layer: 5
   m_Name: MenuPanel
   m_TagString: Untagged
@@ -598,6 +616,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180598535}
   m_CullTransparentMesh: 1
+--- !u!114 &180598539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180598535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a685c54316541241857b362e207d5a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu: {fileID: 1705580983}
+  loadCharacter: {fileID: 144682800}
+  loadingScreen: {fileID: 988597213}
 --- !u!1 &283964918
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,7 +713,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 283964921}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 144682805}
+        m_TargetAssemblyTypeName: ChooseCharacterMenu, Assembly-CSharp
+        m_MethodName: NewGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &283964921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1100,7 +1145,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 527779241}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 144682805}
+        m_TargetAssemblyTypeName: ChooseCharacterMenu, Assembly-CSharp
+        m_MethodName: Back
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &527779241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2220,10 +2277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d179f288cf2519843be0969d0c2e49bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameButton: {fileID: 1138313633}
-  highScoresButton: {fileID: 1917246078}
-  settingsButton: {fileID: 1174057639}
-  exitButton: {fileID: 47101884}
+  menuState: {fileID: 180598535}
   loadingTextPanel: {fileID: 988597213}
 --- !u!1 &1735614484
 GameObject:
@@ -2557,7 +2611,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1946074641}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 144682805}
+        m_TargetAssemblyTypeName: ChooseCharacterMenu, Assembly-CSharp
+        m_MethodName: LoadCharacter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1946074641
 MonoBehaviour:
   m_ObjectHideFlags: 0

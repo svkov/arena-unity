@@ -5,19 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
-    public GameObject newGameButton;
-    public GameObject highScoresButton;
-    public GameObject settingsButton;
-    public GameObject exitButton;
-
+    public GameObject menuState;
     public GameObject loadingTextPanel;
+
+    MenuStateHandler menuStateHandler;
+
+    void Start()
+    {
+        menuStateHandler = menuState.GetComponent<MenuStateHandler>();
+    }
 
     public void NewGame()
     {
-        HideButtons();
-        ShowLoadingTextPanel();
-        StartCoroutine(LoadYourAsyncScene());
+        menuStateHandler.SetState(MenuState.LoadCharacter);
     }
 
     public void Settings()
@@ -27,7 +27,7 @@ public class MainMenu : MonoBehaviour
 
     public void Exit()
     {
-        Debug.Log("Exit");
+        Application.Quit();
     }
 
     public void HighScores()
@@ -37,10 +37,7 @@ public class MainMenu : MonoBehaviour
 
     void HideButtons()
     {
-        newGameButton.SetActive(false);
-        settingsButton.SetActive(false);
-        exitButton.SetActive(false);
-        highScoresButton.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     void ShowLoadingTextPanel()
@@ -50,14 +47,7 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator LoadYourAsyncScene()
     {
-        // The Application loads the Scene in the background as the current Scene runs.
-        // This is particularly good for creating loading screens.
-        // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
-        // a sceneBuildIndex of 1 as shown in Build Settings.
-
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Arena");
-
-        // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
             Debug.Log("Loading..." + asyncLoad.progress);

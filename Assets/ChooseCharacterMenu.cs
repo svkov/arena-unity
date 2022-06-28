@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class ChooseCharacterMenu : MonoBehaviour
 {
-    public Button load;
-    public Button newGame;
-    public Button back;
+    public GameObject menuState;
     public Text description;
+
+    MenuStateHandler menuStateHandler;
 
     void Start()
     {
+        menuStateHandler = menuState.GetComponent<MenuStateHandler>();
         UpdateCharacterPreview();
     }
 
@@ -24,16 +25,16 @@ public class ChooseCharacterMenu : MonoBehaviour
 
     public void LoadCharacter()
     {
-        Debug.Log("Load");
+        menuStateHandler.SetState(MenuState.LoadingScreen);
     }
 
     public void NewGame()
     {
-        Debug.Log("New game");
+        menuStateHandler.SetState(MenuState.LoadingScreen);
     }
 
     public void Back()
     {
-        Debug.Log("Back");
+        menuStateHandler.SetState(MenuState.Main);
     }
 }
