@@ -23,14 +23,17 @@ public class ExperiencePanel : MonoBehaviour
 
     public void SetExp(int experience)
     {
-        slider.maxValue = maxExperience;
-        slider.value = experience;
-
-        experienceText.text = experience.ToString() + "/" + maxExperience.ToString();
+        if(slider != null & experienceText != null)
+        {
+            slider.maxValue = maxExperience;
+            slider.value = experience;
+            experienceText.text = experience.ToString() + "/" + maxExperience.ToString();
+        }
     }
 
     public void SetLevel(int level)
     {
-        text.text = "Level: " + level.ToString();
+        if(text != null)
+            text.text = "Level: " + level.ToString();
     }
 }

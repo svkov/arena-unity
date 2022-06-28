@@ -32,7 +32,7 @@ public class DrawInventoryToHUD : MonoBehaviour
         DrawHUD();
     }
 
-    void DrawHUD()
+    public void DrawHUD()
     {
         for(int i = 0; i < inventory.inventory.Count; i++)
         {

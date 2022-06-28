@@ -24,6 +24,18 @@ public class ActorStats : MonoBehaviour
         UpdateUI();
     }
 
+    public void SetState(int level, int dexterity, int strength, int intelligence, int defense, int speed, int experience)
+    {
+        this.level = level;
+        this.dexterity = dexterity;
+        this.strength = strength;
+        this.intelligence = intelligence;
+        this.defense = defense;
+        this.speed = speed;
+        this.experience = experience;
+        UpdateUI();
+    }
+
     public float GetDamage()
     {
         return strength * 3;

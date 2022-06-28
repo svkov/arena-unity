@@ -9,15 +9,14 @@ public class Portal : MonoBehaviour
     public GameObject graphics;
     public Sprite activatedSprite;
     public Sprite deactivatedSprite;
+    public GameObject hint;
 
     SpriteRenderer sr;
-    // Start is called before the first frame update
     void Start()
     {
         sr = graphics.GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(isActivated)
@@ -50,6 +49,22 @@ public class Portal : MonoBehaviour
         {
             Debug.Log("Loading..." + asyncLoad.progress);
             yield return null;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.name == "Player")
+        {
+            hint.GetComponent<Hint>().ShowHint();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if(collider.name == "Player")
+        {
+            hint.GetComponent<Hint>().HideHint();
         }
     }
 }

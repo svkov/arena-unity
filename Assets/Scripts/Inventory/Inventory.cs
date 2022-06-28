@@ -8,9 +8,34 @@ public class Inventory : MonoBehaviour
     public List<Item> inventory = new List<Item>();
     public GameObject itemObj;
 
+    Hashtable idToItem = new Hashtable();
+
+    void Awake()
+    {
+        var allItems = Resources.FindObjectsOfTypeAll<Item>();
+        for(int i = 0; i < allItems.Length; i++)
+        {
+            idToItem.Add(allItems[i].id, allItems[i]);
+        }
+    }
+
     public bool Add(Item item)
     {
         if (HasFreeSpace())
+        {
+            inventory.Add(item);
+            return true;
+        }
+        return false;
+    }
+
+    public bool Add(int id)
+    {
+        Item item = (Item) idToItem[id];
+        if(item == null)
+            return false;
+
+        if(HasFreeSpace())
         {
             inventory.Add(item);
             return true;
@@ -45,9 +70,10 @@ public class Inventory : MonoBehaviour
 
     public void Drop(Item item)
     {
-        var newItem = Instantiate(itemObj, transform.position, Quaternion.identity);;
-        newItem.GetComponent<SpriteRenderer>().sprite = item.icon;
-        newItem.GetComponent<ItemPicking>().item = item;
+        var newItem = Instantiate(itemObj, transform.position, Quaternion.identity);
+        var itemPicking = newItem.GetComponent<ItemPicking>();
+        itemPicking.graphics.GetComponent<SpriteRenderer>().sprite = item.icon;
+        itemPicking.item = item;
         Remove(item);
     }
 
@@ -56,6 +82,14 @@ public class Inventory : MonoBehaviour
         while(inventory.Count > 0)
         {
             Drop(inventory[0]);
+        }
+    }
+
+    public void RemoveAll()
+    {
+        while(inventory.Count > 0)
+        {
+            Remove(inventory[0]);
         }
     }
 }

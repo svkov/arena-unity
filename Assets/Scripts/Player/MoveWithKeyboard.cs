@@ -11,6 +11,7 @@ public class MoveWithKeyboard : MonoBehaviour
     public float currentOrthographicSize;
     public GameObject inventory;
     public GameObject graphics;
+    public GameObject pausePanel;
 
     Rigidbody2D rb;
     SpriteRenderer sr;
@@ -26,13 +27,36 @@ public class MoveWithKeyboard : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-            
+        PauseInput();        
         Zoom();
         ShowOrHideInventory();
+    }
+
+    void PauseInput()
+    {
+        if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            if(pausePanel.activeSelf)
+            {
+                UnpauseGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
+    }
+
+    void PauseGame()
+    {
+        pausePanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    void UnpauseGame()
+    {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1;
     }
     void FixedUpdate()
     {
