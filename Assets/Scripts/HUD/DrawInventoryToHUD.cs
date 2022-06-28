@@ -16,6 +16,8 @@ public class DrawInventoryToHUD : MonoBehaviour
     {
         inventory = GetComponent<Inventory>();
         InitHUD();
+        DrawHUD();
+        inventory.onInventoryChange.AddListener(DrawHUD);
     }
     void InitHUD()
     {
@@ -29,7 +31,7 @@ public class DrawInventoryToHUD : MonoBehaviour
     }
     void Update()
     {
-        DrawHUD();
+        // DrawHUD();
     }
 
     public void DrawHUD()

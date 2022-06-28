@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Inventory : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Inventory : MonoBehaviour
     public GameObject itemObj;
 
     Hashtable idToItem = new Hashtable();
+
+    public UnityEvent onInventoryChange;
 
     void Awake()
     {
@@ -19,11 +22,18 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        if(onInventoryChange == null)
+            onInventoryChange = new UnityEvent();
+    }
+
     public bool Add(Item item)
     {
         if (HasFreeSpace())
         {
             inventory.Add(item);
+            onInventoryChange.Invoke();
             return true;
         }
         return false;
@@ -34,13 +44,7 @@ public class Inventory : MonoBehaviour
         Item item = (Item) idToItem[id];
         if(item == null)
             return false;
-
-        if(HasFreeSpace())
-        {
-            inventory.Add(item);
-            return true;
-        }
-        return false;
+        return Add(item);
     }
 
     public void Remove(Item item)
@@ -48,6 +52,7 @@ public class Inventory : MonoBehaviour
         if (inventory.Contains(item))
         {
             inventory.Remove(item);
+            onInventoryChange.Invoke();
         }
     }
 
