@@ -17,7 +17,20 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
-        menuStateHandler.SetState(MenuState.LoadCharacter);
+        if(IsCharacterExist())
+        {
+            menuStateHandler.SetState(MenuState.LoadCharacter);
+        }
+        else
+        {
+            menuStateHandler.SetState(MenuState.LoadingScreen);
+        }
+        
+    }
+
+    bool IsCharacterExist()
+    {
+        return PlayerPrefs.GetInt("stats_level", -1) != -1;
     }
 
     public void Settings()
