@@ -15,26 +15,23 @@ public class PlayerState : MonoBehaviour
         health = GetComponent<Health>();
         inventory = GetComponent<Inventory>();
         inventoryToHUD = GetComponent<DrawInventoryToHUD>();
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.O))
-        {
-            SaveData();
-        }
-        if (Input.GetKeyUp(KeyCode.P))
-        {
-            LoadData();
-        }
+        Invoke(nameof(LoadData), 0.5f);
+        InvokeRepeating(nameof(SaveData), 1f, 3f);
     }
 
     void SaveData()
     {
-        
         SaveStats();
         SaveHealth();
         SaveInventory();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            LoadData();
+        }
     }
 
     void SaveStats()
@@ -109,17 +106,10 @@ public class PlayerState : MonoBehaviour
         inventoryToHUD.DrawHUD();
     }
 
-    void DeleteData()
-    {
-        //TODO: Delete data on player death
-        PlayerPrefs.DeleteAll();
-    }
-
     public void NextLevel()
     {
         int level_number = PlayerPrefs.GetInt("level_number", 1);
         level_number++;
         PlayerPrefs.SetInt("level_number", level_number);
-        Debug.Log("Level: " + PlayerPrefs.GetInt("level_number", 1));
     }
 }
