@@ -78,21 +78,20 @@ public class PlayerState : MonoBehaviour
 
     void LoadStats()
     {
-        int defense = PlayerPrefs.GetInt("stats_defense");
-        int dexterity = PlayerPrefs.GetInt("stats_dexterity");
-        int strength = PlayerPrefs.GetInt("stats_strength");
-        int speed = PlayerPrefs.GetInt("stats_speed");
-        int intelligence = PlayerPrefs.GetInt("stats_intelligence");
-        int experience = PlayerPrefs.GetInt("stats_experience");
-        int level = PlayerPrefs.GetInt("stats_level");
+        int defense = PlayerPrefs.GetInt("stats_defense", 0);
+        int dexterity = PlayerPrefs.GetInt("stats_dexterity", 5);
+        int strength = PlayerPrefs.GetInt("stats_strength", 5);
+        int speed = PlayerPrefs.GetInt("stats_speed", 5);
+        int intelligence = PlayerPrefs.GetInt("stats_intelligence", 5);
+        int experience = PlayerPrefs.GetInt("stats_experience", 0);
+        int level = PlayerPrefs.GetInt("stats_level", 1);
         actorStats.SetState(level, dexterity, strength, intelligence, defense, speed, experience);
     }
 
     void LoadHealth()
     {
-        float hp = PlayerPrefs.GetFloat("health");
-        health.hp = hp;
-        health.UpdateHp();
+        float hp = PlayerPrefs.GetFloat("health", -1);
+        health.LoadHealth(hp);
     }
 
     void LoadInventory()

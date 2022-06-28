@@ -9,12 +9,29 @@ public class Health : MonoBehaviour
     public float hp;
     void Start()
     {
+        SetMaxHp();
+    }
+
+    void SetMaxHp()
+    {
         if (TryGetComponent<ActorStats>(out var actorStats))
         {
             maxHp = actorStats.GetMaxHp();
         }
         hpBar.SetMaxHealth(maxHp);
         hp = maxHp;
+    }
+
+    public void LoadHealth(float hp)
+    {
+        if(hp == -1){
+            SetMaxHp();
+        }
+        else
+        {
+            this.hp = hp;
+        }
+        UpdateHp();
     }
 
     public void UpdateHp()
