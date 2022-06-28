@@ -20,4 +20,9 @@ public class PauseUI : MonoBehaviour
         gameObject.SetActive(false);
         Time.timeScale = 1;
     }
+
+    public void DeleteAll()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }
