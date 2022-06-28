@@ -12,26 +12,32 @@ public class ShootByMouse : MonoBehaviour
 
     Animator animator;
     SpriteRenderer sr;
+    ActorStats actorStats;
 
     float shootCooldownMax;
     float shootCooldown;
     void Start()
     {
-        shootCooldownMax = GetComponent<ActorStats>().GetAttackSpeed();
-        shootCooldown = shootCooldownMax;
         animator = playerGraphics.GetComponent<Animator>();
         sr = playerGraphics.GetComponent<SpriteRenderer>();
+        actorStats = GetComponent<ActorStats>();
+        UpdateStats();
+        actorStats.onChangeStats.AddListener(UpdateStats);
     }
 
-    // Update is called once per frame
     void Update()
     {
         Fire();
     }
 
+    void UpdateStats()
+    {
+        shootCooldownMax = actorStats.GetAttackSpeed();
+        shootCooldown = shootCooldownMax;
+    }
+
     void Fire()
     {
-        
         if(shootCooldown > 0)
         {
             shootCooldown -= Time.deltaTime;

@@ -46,7 +46,7 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         health = GetComponent<Health>();
         stats = GetComponent<ActorStats>();
-        speed = GetComponent<ActorStats>().GetMovementSpeed();
+        stats.onChangeStats.AddListener(UpdateStats);
         UpdateAttackSpeed();
         InvokeRepeating(nameof(UpdatePath), 0, 0.5f);
     }
@@ -99,6 +99,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        UpdateSpeed();
 
         rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * direction);
 
@@ -109,6 +110,17 @@ public class EnemyAI : MonoBehaviour
         } else {
             movement = direction;
         }
+    }
+
+    void UpdateStats()
+    {
+        UpdateSpeed();
+        UpdateAttackSpeed();
+    }
+
+    void UpdateSpeed()
+    {
+        speed = stats.GetMovementSpeed();
     }
 
     #region ShootToPlayer
@@ -122,6 +134,7 @@ public class EnemyAI : MonoBehaviour
         {
             ResetAttackCooldown();
             ShootToPlayer();
+            UpdateAttackSpeed();
         }
     }
 

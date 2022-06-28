@@ -1,25 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     public HpBar hpBar;
     public float maxHp;
     public float hp;
+
+    ActorStats actorStats;
     void Start()
     {
+        actorStats = GetComponent<ActorStats>();
         SetMaxHp();
+
+        actorStats.onChangeStats.AddListener(UpdateMaxHp);
     }
 
     void SetMaxHp()
+    {
+        UpdateMaxHp();
+        hp = maxHp;
+    }
+
+    void UpdateMaxHp()
     {
         if (TryGetComponent<ActorStats>(out var actorStats))
         {
             maxHp = actorStats.GetMaxHp();
         }
         hpBar.SetMaxHealth(maxHp);
-        hp = maxHp;
     }
 
     public void LoadHealth(float hp)

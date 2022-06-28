@@ -16,13 +16,17 @@ public class MoveWithKeyboard : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator animator;
+    ActorStats actorStats;
 
     void Start()
     {
-        speed = GetComponent<ActorStats>().GetMovementSpeed();
+        actorStats = GetComponent<ActorStats>();
         rb = GetComponent<Rigidbody2D>();
         sr = graphics.GetComponent<SpriteRenderer>();
         animator = graphics.GetComponent<Animator>();
+
+        UpdateStats();
+        actorStats.onChangeStats.AddListener(UpdateStats);
     }
 
     void Update()
@@ -30,6 +34,11 @@ public class MoveWithKeyboard : MonoBehaviour
         PauseInput();        
         Zoom();
         ShowOrHideInventory();
+    }
+
+    void UpdateStats()
+    {
+        speed = actorStats.GetMovementSpeed();
     }
 
     void PauseInput()

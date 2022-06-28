@@ -37,6 +37,7 @@ public class AttackPlayerBehavior : MonoBehaviour
         UpdateAttackCooldown();
         if(CanAttack())
         {
+            UpdateAttackSpeed();
             ResetAttackCooldown();
             ShootToPlayer();
         }

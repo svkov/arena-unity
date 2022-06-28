@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ActorStats : MonoBehaviour
 {
@@ -18,10 +19,19 @@ public class ActorStats : MonoBehaviour
 
     IUpdateExperienceUI updateUI;
 
+    public UnityEvent onChangeStats;
+
     void Start()
     {
+        if(onChangeStats == null)
+            onChangeStats = new UnityEvent();
         updateUI = GetComponent<IUpdateExperienceUI>();
         UpdateUI();
+    }
+
+    void OnValidate()
+    {
+        onChangeStats.Invoke();
     }
 
     public void SetState(int level, int dexterity, int strength, int intelligence, int defense, int speed, int experience)
@@ -64,6 +74,7 @@ public class ActorStats : MonoBehaviour
         intelligence += Random.Range(0, 3);
         speed += Random.Range(0, 3);
         defense += Random.Range(0, 3);
+        onChangeStats.Invoke();
     }
 
     public int ExperienceOnDeath()
