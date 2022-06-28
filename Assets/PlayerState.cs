@@ -19,7 +19,7 @@ public class PlayerState : MonoBehaviour
         InvokeRepeating(nameof(SaveData), 1f, 3f);
     }
 
-    void SaveData()
+    public void SaveData()
     {
         SaveStats();
         SaveHealth();

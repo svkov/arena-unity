@@ -5,13 +5,10 @@ using UnityEngine.UI;
 
 public class PauseUI : MonoBehaviour
 {
-    void Update()
-    {
-        // Unpause on ESC
-    }
 
     public void Exit()
     {
+        GameObject.Find("Player").GetComponent<PlayerState>().SaveData();
         Application.Quit();
     }
 
