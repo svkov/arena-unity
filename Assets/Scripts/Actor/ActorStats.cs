@@ -19,13 +19,16 @@ public class ActorStats : MonoBehaviour
 
     public UnityEvent onChangeStats;
 
-    [SerializeField]private float hp;
-    [SerializeField]private float maxHp;
+    [SerializeField]private float hp = 1;
+    [SerializeField]private float maxHp = 1;
 
-    void Start()
+    void Awake()
     {
         if(onChangeStats == null)
             onChangeStats = new UnityEvent();
+    }
+    void Start()
+    {
         SetMaxHp();
         onChangeStats.Invoke();
     }

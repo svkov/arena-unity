@@ -14,6 +14,8 @@ public class Health : MonoBehaviour
     void Start()
     {
         actorStats = GetComponent<ActorStats>();
+        UpdateUI();
+
         actorStats.onChangeStats.AddListener(UpdateUI);
     }
 
