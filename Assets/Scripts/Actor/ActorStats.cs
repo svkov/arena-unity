@@ -24,12 +24,12 @@ public class ActorStats : MonoBehaviour
 
     void Awake()
     {
+        SetMaxHp();
         if(onChangeStats == null)
             onChangeStats = new UnityEvent();
     }
     void Start()
     {
-        SetMaxHp();
         onChangeStats.Invoke();
     }
 

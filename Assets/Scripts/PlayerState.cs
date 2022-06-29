@@ -9,6 +9,12 @@ public class PlayerState : MonoBehaviour
     Inventory inventory;
     DrawInventoryToHUD inventoryToHUD;
 
+    [SerializeField] private int defaultSpeed;
+    [SerializeField] private int defaultDexterity;
+    [SerializeField] private int defaultStrength;
+    [SerializeField] private int defaultIntelligence;
+    [SerializeField] private int defaultDefense;
+
     void Start()
     {
         actorStats = GetComponent<ActorStats>();
@@ -78,11 +84,11 @@ public class PlayerState : MonoBehaviour
 
     void LoadStats()
     {
-        int defense = PlayerPrefs.GetInt("stats_defense", 0);
-        int dexterity = PlayerPrefs.GetInt("stats_dexterity", 5);
-        int strength = PlayerPrefs.GetInt("stats_strength", 5);
-        int speed = PlayerPrefs.GetInt("stats_speed", 5);
-        int intelligence = PlayerPrefs.GetInt("stats_intelligence", 5);
+        int defense = PlayerPrefs.GetInt("stats_defense", defaultDefense);
+        int dexterity = PlayerPrefs.GetInt("stats_dexterity", defaultDexterity);
+        int strength = PlayerPrefs.GetInt("stats_strength", defaultStrength);
+        int speed = PlayerPrefs.GetInt("stats_speed", defaultSpeed);
+        int intelligence = PlayerPrefs.GetInt("stats_intelligence", defaultIntelligence);
         int experience = PlayerPrefs.GetInt("stats_experience", 0);
         int level = PlayerPrefs.GetInt("stats_level", 1);
         actorStats.SetState(level, dexterity, strength, intelligence, defense, speed, experience);

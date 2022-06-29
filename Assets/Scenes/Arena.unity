@@ -2028,10 +2028,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e049e57c43d063e41a79b845dbcd42c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxExperience: 0
-  textObject: {fileID: 263926042}
+  maxSliderValue: 0
   sliderObject: {fileID: 1899097713}
-  experienceTextObject: {fileID: 19080899}
+  textOnSliderObject: {fileID: 19080899}
 --- !u!114 &420383699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2706,7 +2705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &576375955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3434,6 +3433,7 @@ GameObject:
   - component: {fileID: 683048392}
   - component: {fileID: 683048391}
   - component: {fileID: 683048390}
+  - component: {fileID: 683048393}
   m_Layer: 5
   m_Name: HpPanel
   m_TagString: Untagged
@@ -3512,6 +3512,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683048388}
   m_CullTransparentMesh: 1
+--- !u!114 &683048393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683048388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4acc0c9f09ee544b631292b8604221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSliderValue: 0
+  sliderObject: {fileID: 1893120517}
+  textOnSliderObject: {fileID: 1150362665}
 --- !u!1 &684193955
 GameObject:
   m_ObjectHideFlags: 0
@@ -5123,6 +5138,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b60bac6a2254064391ed17b7e7ae49b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSpeed: 30
+  defaultDexterity: 30
+  defaultStrength: 30
+  defaultIntelligence: 30
+  defaultDefense: 30
 --- !u!4 &954193134
 Transform:
   m_ObjectHideFlags: 0
@@ -5337,16 +5357,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  dexterity: 5
-  strength: 5
-  intelligence: 5
-  defense: 0
-  speed: 5
+  dexterity: 30
+  strength: 30
+  intelligence: 30
+  defense: 30
+  speed: 30
   experienceToLevelUp: 100
   experience: 0
   onChangeStats:
     m_PersistentCalls:
       m_Calls: []
+  hp: 0
+  maxHp: 0
 --- !u!114 &954193150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5361,6 +5383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   experiencePanelGameObject: {fileID: 420383696}
   statsPanel: {fileID: 684193955}
+  hpPanelGameObject: {fileID: 683048388}
 --- !u!1 &964153490
 GameObject:
   m_ObjectHideFlags: 0
