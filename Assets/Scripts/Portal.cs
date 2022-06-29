@@ -36,7 +36,9 @@ public class Portal : MonoBehaviour
     {
         if(isActivated)
         {
-            player.GetComponent<PlayerState>().NextLevel();
+            var playerState = player.GetComponent<PlayerState>();
+            playerState.NextLevel();
+            playerState.SaveData();
             StartCoroutine(LoadNextLevel());
         }
     }
@@ -47,7 +49,6 @@ public class Portal : MonoBehaviour
 
         while (!asyncLoad.isDone)
         {
-            Debug.Log("Loading..." + asyncLoad.progress);
             yield return null;
         }
     }

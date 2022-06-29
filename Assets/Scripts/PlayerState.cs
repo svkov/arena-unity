@@ -48,7 +48,7 @@ public class PlayerState : MonoBehaviour
 
     void SaveHealth()
     {
-        PlayerPrefs.SetFloat("health", health.hp);
+        PlayerPrefs.SetFloat("health", actorStats.GetHp());
     }
 
     void SaveInventory()
@@ -91,7 +91,7 @@ public class PlayerState : MonoBehaviour
     void LoadHealth()
     {
         float hp = PlayerPrefs.GetFloat("health", -1);
-        health.LoadHealth(hp);
+        actorStats.LoadHealth(hp);
     }
 
     void LoadInventory()

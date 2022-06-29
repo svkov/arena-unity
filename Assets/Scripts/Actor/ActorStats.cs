@@ -17,15 +17,16 @@ public class ActorStats : MonoBehaviour
 
     public int experience = 0;
 
-    IUpdateExperienceUI updateUI;
-
     public UnityEvent onChangeStats;
+
+    [SerializeField]private float hp;
+    [SerializeField]private float maxHp;
 
     void Start()
     {
         if(onChangeStats == null)
             onChangeStats = new UnityEvent();
-        updateUI = GetComponent<IUpdateExperienceUI>();
+        SetMaxHp();
         onChangeStats.Invoke();
     }
 
@@ -92,5 +93,56 @@ public class ActorStats : MonoBehaviour
         }
         onChangeStats.Invoke();
     }
+
+    #region hp
+    public float GetHp()
+    {
+        return hp;
+    }
+
+    void UpdateMaxHp()
+    {
+        maxHp = GetMaxHp();
+    }
+
+    void SetMaxHp()
+    {
+        UpdateMaxHp();
+        hp = maxHp;
+    }
+
+    public void LoadHealth(float hp)
+    {
+        if(hp == -1){
+            SetMaxHp();
+        }
+        else
+        {
+            this.hp = hp;
+        }
+        onChangeStats.Invoke();
+    }
+
+    public void TakeDamage(GameObject owner)
+    {
+        if (owner.TryGetComponent(out ActorStats stats))
+        {
+            CalculateDamage(stats);
+        }
+    }
+
+    void CalculateDamage(ActorStats enemyStats)
+    {
+        hp = Mathf.Clamp(hp - enemyStats.GetDamage(), 0, hp);
+        onChangeStats.Invoke();
+        if (hp == 0)
+        {
+            enemyStats.IncreaseExp(GetComponent<ActorStats>().ExperienceOnDeath());
+            Destroy(GetComponent<BoxCollider2D>());
+            Destroy(gameObject, 3.0f);
+        }
+    }
+
+    #endregion hp
 
 }

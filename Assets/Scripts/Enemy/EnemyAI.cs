@@ -62,7 +62,7 @@ public class EnemyAI : MonoBehaviour
 
     void UpdatePath()
     {
-        if (health.hp == 0)
+        if (stats.GetHp() == 0)
             return;
         if (target == null | Vector3.Distance(transform.position, target.position) > attentionRadius)
             return;
@@ -82,7 +82,7 @@ public class EnemyAI : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (health.hp == 0 || path == null)
+        if (stats.GetHp() == 0 || path == null)
         {
             return;
         }
@@ -126,7 +126,7 @@ public class EnemyAI : MonoBehaviour
 
     void Attack()
     {
-        if (target == null || health.hp == 0)
+        if (target == null || stats.GetHp() == 0)
             return;
         UpdateAttackCooldown();
         if (CanAttack())
@@ -195,7 +195,7 @@ public class EnemyAI : MonoBehaviour
 
         FlipIfNeeded();
 
-        if(health.hp == 0 && alive)
+        if(stats.GetHp() == 0 && alive)
         {
             alive = false;
             animator.SetTrigger("Die");

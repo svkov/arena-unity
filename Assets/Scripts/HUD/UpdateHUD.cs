@@ -6,13 +6,16 @@ public class UpdateHUD : MonoBehaviour
 {
     public GameObject experiencePanelGameObject;
     public GameObject statsPanel;
+    public GameObject hpPanelGameObject;
     ExperiencePanel experiencePanel;
+    HpSlider hpSlider;
     HUDStatsPanel hudStatsPanel;
     ActorStats actorStats;
 
     void Awake()
     {
         experiencePanel = experiencePanelGameObject.GetComponent<ExperiencePanel>();
+        hpSlider = hpPanelGameObject.GetComponent<HpSlider>();
     }
 
     void Start()
@@ -27,5 +30,6 @@ public class UpdateHUD : MonoBehaviour
     {
         experiencePanel.UpdateUI(actorStats);
         hudStatsPanel.UpdateUI(actorStats);
+        hpSlider.UpdateUI(actorStats);
     }
 }

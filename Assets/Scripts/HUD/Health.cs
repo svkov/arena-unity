@@ -10,63 +10,26 @@ public class Health : MonoBehaviour
     public float hp;
 
     ActorStats actorStats;
+
     void Start()
     {
         actorStats = GetComponent<ActorStats>();
-        SetMaxHp();
-
-        actorStats.onChangeStats.AddListener(UpdateMaxHp);
-    }
-
-    void SetMaxHp()
-    {
-        UpdateMaxHp();
-        hp = maxHp;
+        actorStats.onChangeStats.AddListener(UpdateUI);
     }
 
     void UpdateMaxHp()
     {
-        if (TryGetComponent<ActorStats>(out var actorStats))
-        {
-            maxHp = actorStats.GetMaxHp();
-        }
-        hpBar.SetMaxHealth(maxHp);
+        hpBar.SetMaxHealth(actorStats.GetMaxHp());
     }
 
-    public void LoadHealth(float hp)
+    void UpdateHp()
     {
-        if(hp == -1){
-            SetMaxHp();
-        }
-        else
-        {
-            this.hp = hp;
-        }
+        hpBar.SetHealth(actorStats.GetHp());
+    }
+
+    void UpdateUI()
+    {
+        UpdateMaxHp();
         UpdateHp();
-    }
-
-    public void UpdateHp()
-    {
-        hpBar.SetHealth(hp);
-    }
-
-    public void TakeDamage(GameObject owner)
-    {
-        if (owner.TryGetComponent(out ActorStats stats))
-        {
-            CalculateDamage(stats);
-        }
-    }
-
-    void CalculateDamage(ActorStats enemyStats)
-    {
-        hp = Mathf.Clamp(hp - enemyStats.GetDamage(), 0, hp);
-        UpdateHp();
-        if (hp == 0)
-        {
-            enemyStats.IncreaseExp(GetComponent<ActorStats>().ExperienceOnDeath());
-            Destroy(GetComponent<BoxCollider2D>());
-            Destroy(gameObject, 3.0f);
-        }
     }
 }

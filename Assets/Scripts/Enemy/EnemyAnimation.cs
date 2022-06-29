@@ -8,7 +8,7 @@ public class EnemyAnimation : MonoBehaviour
     Animator animator;
     Rigidbody2D rb;
     SpriteRenderer sr;
-    Health healthObj;
+    ActorStats actorStats;
     EnemyAI ai;
 
     bool alive = true;
@@ -18,7 +18,7 @@ public class EnemyAnimation : MonoBehaviour
         animator = graphics.GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sr = graphics.GetComponent<SpriteRenderer>();
-        healthObj = GetComponent<Health>();
+        actorStats = GetComponent<ActorStats>();
         ai = GetComponent<EnemyAI>();
     }
 
@@ -46,7 +46,7 @@ public class EnemyAnimation : MonoBehaviour
             sr.flipX = true;
         }
 
-        if(healthObj.hp == 0 && alive)
+        if(actorStats.GetHp() == 0 && alive)
         {
             alive = false;
             animator.SetTrigger("Die");

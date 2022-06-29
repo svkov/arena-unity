@@ -11,19 +11,19 @@ public class ShootToPlayer : MonoBehaviour
     float shootCooldownMax;
     float shootCooldown;
     GameObject player;
-    Health health;
+    ActorStats actorStats;
 
     void Start()
     {
         shootCooldownMax = GetComponent<ActorStats>().GetAttackSpeed();
         shootCooldown = shootCooldownMax;
         player = GameObject.Find("Player");
-        health = GetComponent<Health>();
+        actorStats = GetComponent<ActorStats>();
     }
 
     void Update()
     {
-        if(health.hp > 0)
+        if(actorStats.GetHp() > 0)
         {
             Fire();
         }
@@ -42,7 +42,6 @@ public class ShootToPlayer : MonoBehaviour
 
     void Shoot()
     {
-        // var center = GetComponent<Renderer>().bounds.center;
         var center = transform.position;
         var direction = player.transform.position - center;
         direction.Normalize();

@@ -23,8 +23,8 @@ public class CollideProjectile : MonoBehaviour
 
             if(gameObject.layer != projectile.owner.layer)
             {
-                var health = GetComponent<Health>();
-                health.TakeDamage(projectile.owner);
+                var actorStats = GetComponent<ActorStats>();
+                actorStats.TakeDamage(projectile.owner);
                 Destroy(projectile.gameObject);
             }
             

@@ -32,7 +32,7 @@ public class AttackPlayerBehavior : MonoBehaviour
 
     void Update()
     {
-        if(target == null || healthObj.hp == 0)
+        if(target == null || stats.GetHp() == 0)
             return;
         UpdateAttackCooldown();
         if(CanAttack())
