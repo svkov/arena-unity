@@ -64,6 +64,8 @@ public class EnemyAI : MonoBehaviour
     {
         if (stats.GetHp() == 0)
             return;
+        if(target == null)
+            return;
         if (target == null | Vector3.Distance(transform.position, target.position) > attentionRadius)
             return;
         if (seeker.IsDone())
@@ -115,6 +117,10 @@ public class EnemyAI : MonoBehaviour
     {
         UpdateSpeed();
         UpdateAttackSpeed();
+        if(stats.GetHp() == 0)
+        {
+            Die();
+        }
     }
 
     void UpdateSpeed()
@@ -194,13 +200,6 @@ public class EnemyAI : MonoBehaviour
         animator.SetBool("Back", movement.y > 0);
 
         FlipIfNeeded();
-
-        if(stats.GetHp() == 0 && alive)
-        {
-            alive = false;
-            animator.SetTrigger("Die");
-            Die();
-        }
     }
 
     void FlipIfNeeded()
@@ -218,6 +217,8 @@ public class EnemyAI : MonoBehaviour
 
     void Die()
     {
+        alive = false;
+        animator.SetTrigger("Die");
         GetComponent<Inventory>().DropAll();
     }
 }

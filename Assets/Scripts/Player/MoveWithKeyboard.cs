@@ -12,6 +12,7 @@ public class MoveWithKeyboard : MonoBehaviour
     public GameObject inventory;
     public GameObject graphics;
     public GameObject pausePanel;
+    public GameObject diePanel;
 
     Rigidbody2D rb;
     SpriteRenderer sr;
@@ -25,8 +26,8 @@ public class MoveWithKeyboard : MonoBehaviour
         sr = graphics.GetComponent<SpriteRenderer>();
         animator = graphics.GetComponent<Animator>();
 
-        UpdateStats();
-        actorStats.onChangeStats.AddListener(UpdateStats);
+        OnChangeStats();
+        actorStats.onChangeStats.AddListener(OnChangeStats);
     }
 
     void Update()
@@ -36,9 +37,18 @@ public class MoveWithKeyboard : MonoBehaviour
         ShowOrHideInventory();
     }
 
-    void UpdateStats()
+    void OnChangeStats()
     {
         speed = actorStats.GetMovementSpeed();
+        if(actorStats.GetHp() == 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        diePanel.SetActive(true);
     }
 
     void PauseInput()
