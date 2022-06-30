@@ -50,6 +50,7 @@ public class PlayerState : MonoBehaviour
         PlayerPrefs.SetInt("stats_intelligence", actorStats.intelligence);
         PlayerPrefs.SetInt("stats_experience", actorStats.experience);
         PlayerPrefs.SetInt("stats_level", actorStats.level);
+        PlayerPrefs.SetInt("stats_score", actorStats.GetScore());
     }
 
     void SaveHealth()
@@ -91,7 +92,8 @@ public class PlayerState : MonoBehaviour
         int intelligence = PlayerPrefs.GetInt("stats_intelligence", defaultIntelligence);
         int experience = PlayerPrefs.GetInt("stats_experience", 0);
         int level = PlayerPrefs.GetInt("stats_level", 1);
-        actorStats.SetState(level, dexterity, strength, intelligence, defense, speed, experience);
+        int score = PlayerPrefs.GetInt("stats_score", 0);
+        actorStats.SetState(level, dexterity, strength, intelligence, defense, speed, experience, score);
     }
 
     void LoadHealth()

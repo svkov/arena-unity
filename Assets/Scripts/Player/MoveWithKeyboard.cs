@@ -49,6 +49,7 @@ public class MoveWithKeyboard : MonoBehaviour
     void Die()
     {
         diePanel.SetActive(true);
+        diePanel.GetComponent<DiePanel>().SetScore(actorStats.GetScore());
     }
 
     void PauseInput()

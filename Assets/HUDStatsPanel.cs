@@ -10,6 +10,7 @@ public class HUDStatsPanel : MonoBehaviour
     public Text defense;
     public Text speed;
     public Text intelligence;
+    public Text score;
 
     public void UpdateUI(ActorStats actorStats)
     {
@@ -18,5 +19,6 @@ public class HUDStatsPanel : MonoBehaviour
         defense.text = "DEF: " + actorStats.defense.ToString();
         speed.text = "SPD: " + actorStats.speed.ToString();
         intelligence.text = "INT: " + actorStats.intelligence.ToString();
+        score.text = "SCR: " + actorStats.GetScore().ToString();
     }
 }

@@ -19,6 +19,8 @@ public class ActorStats : MonoBehaviour
 
     public UnityEvent onChangeStats;
 
+    private int score;
+
     [SerializeField]private float hp = 1;
     [SerializeField]private float maxHp = 1;
 
@@ -38,7 +40,7 @@ public class ActorStats : MonoBehaviour
         onChangeStats.Invoke();
     }
 
-    public void SetState(int level, int dexterity, int strength, int intelligence, int defense, int speed, int experience)
+    public void SetState(int level, int dexterity, int strength, int intelligence, int defense, int speed, int experience, int score)
     {
         this.level = level;
         this.dexterity = dexterity;
@@ -47,6 +49,7 @@ public class ActorStats : MonoBehaviour
         this.defense = defense;
         this.speed = speed;
         this.experience = experience;
+        this.score = score;
         onChangeStats.Invoke();
     }
 
@@ -81,7 +84,7 @@ public class ActorStats : MonoBehaviour
         onChangeStats.Invoke();
     }
 
-    public int ExperienceOnDeath()
+    public int GetExperienceOnDie()
     {
         return 10;
     }
@@ -140,7 +143,8 @@ public class ActorStats : MonoBehaviour
         onChangeStats.Invoke();
         if (hp == 0)
         {
-            enemyStats.IncreaseExp(GetComponent<ActorStats>().ExperienceOnDeath());
+            enemyStats.IncreaseExp(GetExperienceOnDie());
+            enemyStats.IncreaseScore(GetScoreOnDie());
             Destroy(GetComponent<BoxCollider2D>());
             Destroy(gameObject, 3.0f);
         }
@@ -148,4 +152,23 @@ public class ActorStats : MonoBehaviour
 
     #endregion hp
 
+    #region score
+
+    void IncreaseScore(int toIncrease)
+    {
+        score += toIncrease;
+        onChangeStats.Invoke();
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
+    int GetScoreOnDie()
+    {
+        return Mathf.Max((strength + dexterity + defense + speed) / 10, 1);
+    }
+
+    #endregion score
 }
