@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
-public class InventorySlot : MonoBehaviour
+public class InventorySlot : MonoBehaviour, IPointerClickHandler 
 {
     public Image icon;
     Item item;
@@ -26,5 +28,18 @@ public class InventorySlot : MonoBehaviour
     public void UseItem()
     {
         Debug.Log("Use item");
+    }
+
+    public void DropItem()
+    {
+        Debug.Log("Drop item");
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+            UseItem();
+         else if (eventData.button == PointerEventData.InputButton.Right)
+            DropItem();
     }
 }
