@@ -11,7 +11,6 @@ public class DrawInventoryToHUD : MonoBehaviour
     public GameObject slots;
     readonly List<GameObject> inventorySlots = new List<GameObject>();
 
-    // Start is called before the first frame update
     void Start()
     {
         inventory = GetComponent<Inventory>();
@@ -21,34 +20,34 @@ public class DrawInventoryToHUD : MonoBehaviour
     }
     void InitHUD()
     {
-        for(int i = 0; i < inventory.size; i++)
+        for (int i = 0; i < inventory.size; i++)
         {
             GameObject slot = Instantiate(inventorySlot);
             inventorySlots.Add(slot);
             slot.transform.SetParent(slots.transform);
+            var slotObject = inventorySlot.GetComponent<InventorySlot>();
+            if (i < inventory.inventory.Count)
+            {
+                slotObject.SetItem(inventory.inventory[i]);
+            }
+            else
+            {
+                slotObject.ClearSlot();
+            }
+
         }
 
-    }
-    void Update()
-    {
-        // DrawHUD();
     }
 
     public void DrawHUD()
     {
-        for(int i = 0; i < inventory.inventory.Count; i++)
+        for (int i = 0; i < inventory.inventory.Count; i++)
         {
-            Transform iconTransform = inventorySlots[i].transform.Find("Icon");
-            GameObject icon = iconTransform.gameObject;
-            Image image = icon.GetComponent<Image>();
-            image.sprite = inventory.inventory[i].icon;
+            inventorySlots[i].GetComponent<InventorySlot>().SetItem(inventory.inventory[i]);
         }
-        for(int i = inventory.inventory.Count; i < inventory.size; i++)
+        for (int i = inventory.inventory.Count; i < inventory.size; i++)
         {
-            Transform iconTransform = inventorySlots[i].transform.Find("Icon");
-            GameObject icon = iconTransform.gameObject;
-            Image image = icon.GetComponent<Image>();
-            image.sprite = null;
+            inventorySlots[i].GetComponent<InventorySlot>().ClearSlot();
         }
     }
 }

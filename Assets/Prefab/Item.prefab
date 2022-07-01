@@ -131,6 +131,7 @@ MonoBehaviour:
   item: {fileID: 0}
   graphics: {fileID: 7842549353464554456}
   hint: {fileID: 334889585737075216}
+  description: {fileID: 0}
 --- !u!61 &3459334439517730385
 BoxCollider2D:
   m_ObjectHideFlags: 0
